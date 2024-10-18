@@ -1,4 +1,4 @@
-package com.example.bubsort;
+package com.csuf.bubsort;
 
 import org.junit.Test;
 

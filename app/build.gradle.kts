@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bubsort"
+    namespace = "com.csuf.bubsort"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.bubsort"
+        applicationId = "com.csuf.bubsort"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -29,6 +29,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -38,4 +42,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
+
 }
