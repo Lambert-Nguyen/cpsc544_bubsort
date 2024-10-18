@@ -1,11 +1,12 @@
 /*
  * <!--
  *   ~ /**
- *   ~  * File       : $com.csuf.ui
+ *   ~  * File       : $com.csuf.bubsort.MainActivity
  *   ~  * Brief      : Java Class File for UI Main Activity
  *   ~  * Author     : Nguyen Phuong Duy Lam
- *   ~  * Last Edited: Nguyen Phuong Duy Lam
  *   ~  * Created On : 18/October/2024
+ *   ~  * Last Edited: Nguyen Phuong Duy Lam
+ *   ~  * Edited Date: 18/October/2024
  *   ~  * Details    :
  *   ~  * <p>
  *   ~  * *****************************************************************************************
@@ -14,12 +15,12 @@
  *   ~
  *   -->
  */
-package com.csuf.ui;
+package com.csuf.bubsort;
 
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.csuf.bubsort.BubbleSort;
+
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {

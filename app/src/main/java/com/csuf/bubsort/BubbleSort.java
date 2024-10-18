@@ -1,7 +1,7 @@
 /*
  * <!--
  *   ~ /**
- *   ~  * File       : $com.csuf.bubsort
+ *   ~  * File       : $com.csuf.bubsort.BubbleSort
  *   ~  * Brief      : Java Class File for Bubble Sort Function
  *   ~  * Author     : Nguyen Phuong Duy Lam
  *   ~  * Last Edited: Nguyen Phuong Duy Lam
