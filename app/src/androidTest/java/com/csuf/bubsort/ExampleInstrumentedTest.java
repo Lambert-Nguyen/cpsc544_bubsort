@@ -1,4 +1,4 @@
-package com.example.bubsort;
+package com.csuf.bubsort;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.bubsort", appContext.getPackageName());
+        assertEquals("com.csuf.bubsort", appContext.getPackageName());
     }
 }
