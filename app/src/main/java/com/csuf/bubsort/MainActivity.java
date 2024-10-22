@@ -19,11 +19,20 @@ package com.csuf.bubsort;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    ImageView imageView4;
+    ImageView imageView5;
+    ImageView imageView6;
+    ImageView imageView7;
+    ImageView imageView8;
 
     private TextView sortedArrayTextView;
     private int[] array = {5, 3, 8, 4, 2, 7};  // Initial example array
@@ -42,6 +51,29 @@ public class MainActivity extends AppCompatActivity {
         // Handle reset button click
         resetButton.setOnClickListener(view -> confirmReset());  // Call confirmReset here
 
+        // Display the sorted array on the UI
+        TextView outputView = findViewById(R.id.editTextView);
+        outputView.setText(Arrays.toString(sortedArray));
+
+        // Declare animation objects
+        Animation wiggleAnimation = AnimationUtils.loadAnimation(this, R.anim.wiggle);
+        Animation wiggleAnimation2 = AnimationUtils.loadAnimation(this, R.anim.wiggle2);
+        Animation wiggleAnimation3 = AnimationUtils.loadAnimation(this, R.anim.wiggle3);
+
+        imageView4 = findViewById(R.id.imageView4);
+        imageView4.startAnimation(wiggleAnimation2);
+
+        imageView5 = findViewById(R.id.imageView5);
+        imageView5.startAnimation(wiggleAnimation);
+
+        imageView6 = findViewById(R.id.imageView6);
+        imageView6.startAnimation(wiggleAnimation2);
+
+        imageView7 = findViewById(R.id.imageView7);
+        imageView7.startAnimation(wiggleAnimation);
+
+        imageView8 = findViewById(R.id.imageView8);
+        imageView8.startAnimation(wiggleAnimation3);
     }
 
     private void displaySortedArray() {
@@ -67,5 +99,4 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 }
-
 

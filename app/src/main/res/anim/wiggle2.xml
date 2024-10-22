@@ -2,12 +2,19 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android">
 
     <rotate
-        android:duration="2000"
+        android:duration="2200"
         android:fromDegrees="-5"
         android:pivotX="50%"
         android:pivotY="50%"
+        android:toDegrees="2"
         android:repeatCount="infinite"
-        android:repeatMode="reverse"
-        android:toDegrees="3" />
+        android:repeatMode="reverse" />
+
+    <translate android:duration="2400"
+        android:fromYDelta="-3%"
+        android:toYDelta="3%"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse" />
+
 
 </set>
