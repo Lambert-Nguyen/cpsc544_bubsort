@@ -17,6 +17,7 @@
  */
 package com.csuf.bubsort;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Handle reset button click
         resetButton.setOnClickListener(view -> resetArray());
+        // Handle reset button click
+        resetButton.setOnClickListener(view -> confirmReset());  // Call confirmReset here
+
     }
 
     private void displaySortedArray() {
@@ -54,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
         array = new int[] {};  // Clear the array or set it to its original state
         // Clear the TextView
         sortedArrayTextView.setText("Array has been reset.");
+    }
+
+    private void confirmReset() {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Reset")
+                .setMessage("Are you sure you want to reset the array?")
+                .setPositiveButton("Yes", (dialog, which) -> resetArray())
+                .setNegativeButton("No", null)
+                .show();
     }
 }
 
