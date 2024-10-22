@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
         displaySortedArray();
 
         // Handle reset button click
-        resetButton.setOnClickListener(view -> resetArray());
-        // Handle reset button click
         resetButton.setOnClickListener(view -> confirmReset());  // Call confirmReset here
 
     }
