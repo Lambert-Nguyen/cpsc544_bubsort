@@ -6,7 +6,7 @@
  *   ~  * Author     : Nguyen Phuong Duy Lam
  *   ~  * Created On : 18/October/2024
  *   ~  * Last Edited: Nguyen Phuong Duy Lam
- *   ~  * Edited Date: 18/October/2024
+ *   ~  * Edited Date: 21/October/2024
  *   ~  * Details    :
  *   ~  * <p>
  *   ~  * *****************************************************************************************
@@ -17,28 +17,55 @@
  */
 package com.csuf.bubsort;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Arrays;
-
 public class MainActivity extends AppCompatActivity {
+
+    private TextView sortedArrayTextView;
+    private int[] array = {5, 3, 8, 4, 2, 7};  // Initial example array
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example input array
-        int[] array = {5, 3, 8, 4, 2, 7};
+        sortedArrayTextView = findViewById(R.id.sortedArrayTextView);
+        Button resetButton = findViewById(R.id.resetButton);
 
-        // Sort the array using BubbleSort business logic
+        // Display the sorted array
+        displaySortedArray();
+
+        // Handle reset button click
+        resetButton.setOnClickListener(view -> confirmReset());  // Call confirmReset here
+
+    }
+
+    private void displaySortedArray() {
+        // Call the BubbleSort class to sort the array
         int[] sortedArray = BubbleSort.sort(array);
+        // Display the sorted array in the TextView
+        sortedArrayTextView.setText("Sorted Array: " + java.util.Arrays.toString(sortedArray));
+    }
 
-        // Display the sorted array on the UI
-        TextView outputView = findViewById(R.id.sortedArrayTextView);
-        outputView.setText(Arrays.toString(sortedArray));
+    private void resetArray() {
+        // Reset the array to a new state (e.g., the initial state or an empty state)
+        array = new int[] {};  // Clear the array or set it to its original state
+        // Clear the TextView
+        sortedArrayTextView.setText("Array has been reset.");
+    }
+
+    private void confirmReset() {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Reset")
+                .setMessage("Are you sure you want to reset the array?")
+                .setPositiveButton("Yes", (dialog, which) -> resetArray())
+                .setNegativeButton("No", null)
+                .show();
     }
 }
+
 
