@@ -1,3 +1,20 @@
+/*
+ * <!--
+ *   ~ /**
+ *   ~  * File       : $com.csuf.bubsort.MainActivity
+ *   ~  * Brief      : Java Class File for UI Main Activity
+ *   ~  * Author     : Nguyen Phuong Duy Lam
+ *   ~  * Created On : 18/October/2024
+ *   ~  * Last Edited: Nguyen Phuong Duy Lam
+ *   ~  * Edited Date: 23/October/2024
+ *   ~  * Details    :
+ *   ~  * <p>
+ *   ~  * *****************************************************************************************
+ *   ~  * *****   Copyright 2024. Cal State Fullerton. All rights reserved - CONFIDENTIAL *********
+ *   ~  * *****************************************************************************************
+ *   ~
+ *   -->
+ */
 package com.csuf.bubsort;
 
 import android.os.Bundle;
