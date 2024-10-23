@@ -39,17 +39,25 @@ public class MainActivity extends AppCompatActivity {
         stepsTextView = findViewById(R.id.editTextView);  // TextView to display steps
 
         Button sortButton = findViewById(R.id.sortButton);  // Sort button
+        Button reverseSortButton = findViewById(R.id.reverseSortButton);  // Reverse sort button
         Button resetButton = findViewById(R.id.resetButton);  // Reset button
+        Button quitButton = findViewById(R.id.quitButton);  // Quit button
 
-        // Sort button logic
-        sortButton.setOnClickListener(v -> sortUserInput());
+        // Sort button logic (ascending order)
+        sortButton.setOnClickListener(v -> sortUserInput(false));
+
+        // Reverse sort button logic (descending order)
+        reverseSortButton.setOnClickListener(v -> sortUserInput(true));
 
         // Reset button logic
         resetButton.setOnClickListener(v -> resetFields());
+
+        // Quit button logic
+        quitButton.setOnClickListener(v -> finish());  // Close the app
     }
 
     // Method to sort the user-input array and display steps
-    private void sortUserInput() {
+    private void sortUserInput(boolean reverse) {
         String inputText = inputArrayEditText.getText().toString().trim();
 
         if (!inputText.isEmpty()) {
@@ -61,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                     intArray[i] = Integer.parseInt(stringArray[i].trim());
                 }
 
-                // Call BubbleSort class to sort the array and display intermediate steps
-                String steps = BubbleSort.sortWithSteps(intArray);
+                // Call BubbleSort class to sort the array with the correct order (ascending or descending)
+                String steps = BubbleSort.sortWithSteps(intArray, reverse);
 
                 // Display the sorting steps in the TextView
                 stepsTextView.setText(steps);

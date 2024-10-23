@@ -21,7 +21,8 @@ import java.util.Arrays;
 
 public class BubbleSort {
 
-    public static String sortWithSteps(int[] array) {
+    // Method to sort with steps, and handle reverse sorting based on the 'reverse' flag
+    public static String sortWithSteps(int[] array, boolean reverse) {
         StringBuilder steps = new StringBuilder();  // To store intermediate steps
         int n = array.length;
 
@@ -33,14 +34,23 @@ public class BubbleSort {
             boolean swapped = false;
 
             for (int j = 0; j < n - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    // Swap the elements
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                    swapped = true;
+                // Reverse sorting condition: if reverse is true, swap if current is less than next
+                // Normal sorting condition: swap if current is greater than next
+                if (reverse) {
+                    if (array[j] < array[j + 1]) {
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                        swapped = true;
+                    }
+                } else {
+                    if (array[j] > array[j + 1]) {
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                        swapped = true;
+                    }
                 }
-
                 // Log the array after each comparison
                 steps.append(Arrays.toString(array)).append("\n");
             }
