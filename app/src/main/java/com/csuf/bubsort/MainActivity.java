@@ -26,6 +26,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageView4;
@@ -35,15 +37,20 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView8;
 
     private TextView sortedArrayTextView;
+    private TextView dialogTextView;
     private int[] array = {5, 3, 8, 4, 2, 7};  // Initial example array
+    private int[] sortedArray = {};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sortedArrayTextView = findViewById(R.id.sortedArrayTextView);
+        sortedArrayTextView = findViewById(R.id.MainTextView);
+        dialogTextView = findViewById(R.id.editTextText2);
         Button resetButton = findViewById(R.id.resetButton);
+        sortedArrayTextView.setText("Welcome to BubSort Application");
+
 
         // Display the sorted array
         displaySortedArray();
@@ -78,16 +85,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void displaySortedArray() {
         // Call the BubbleSort class to sort the array
-        int[] sortedArray = BubbleSort.sort(array);
+        sortedArray = BubbleSort.sort(array);
         // Display the sorted array in the TextView
-        sortedArrayTextView.setText("Sorted Array: " + java.util.Arrays.toString(sortedArray));
+//        MainTextView.setText("Sorted Array: " + java.util.Arrays.toString(sortedArray));
     }
 
     private void resetArray() {
         // Reset the array to a new state (e.g., the initial state or an empty state)
         array = new int[] {};  // Clear the array or set it to its original state
         // Clear the TextView
-        sortedArrayTextView.setText("Array has been reset.");
+        dialogTextView.setText("Array has been reset.");
     }
 
     private void confirmReset() {
