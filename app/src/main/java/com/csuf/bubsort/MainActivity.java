@@ -18,6 +18,7 @@
 package com.csuf.bubsort;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Display the sorting steps in the TextView
                 stepsTextView.setText(steps);
+                stepsTextView.setMovementMethod(new ScrollingMovementMethod());
 
             } catch (NumberFormatException e) {
                 // Handle invalid input

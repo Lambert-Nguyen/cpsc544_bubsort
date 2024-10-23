@@ -192,13 +192,15 @@
         android:fontFamily="@font/open_sans_semibold"
         android:gravity="start|top"
         android:paddingHorizontal="10dp"
+        android:scrollbars="vertical"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/quitButton"
         app:layout_constraintEnd_toEndOf="@+id/resetButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/sortButton"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText"
         app:layout_constraintVertical_bias="1.0" />
+
 
     <EditText
         android:id="@+id/editTextText"
