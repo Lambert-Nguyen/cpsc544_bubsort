@@ -19,6 +19,7 @@ package com.csuf.bubsort;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText inputArrayEditText;
     private TextView stepsTextView;
+    private static final String TAG = MainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     // Method to sort the user-input array and display steps
     private void sortUserInput(boolean reverse) {
         String inputText = inputArrayEditText.getText().toString().trim();
+        Log.d(TAG, "sortUserInput: inputText: " + inputText);
 
         if (!inputText.isEmpty()) {
             try {
