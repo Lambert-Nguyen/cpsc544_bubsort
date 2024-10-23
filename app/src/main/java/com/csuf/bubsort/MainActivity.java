@@ -27,31 +27,28 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private EditText inputArrayEditText;
-    private TextView sortedArrayTextView;
+    private TextView stepsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find UI elements by ID
-        inputArrayEditText = findViewById(R.id.editTextText);  // User input
-        sortedArrayTextView = findViewById(R.id.editTextView);  // Display sorted array
+        inputArrayEditText = findViewById(R.id.editTextText);  // User input EditText
+        stepsTextView = findViewById(R.id.editTextView);  // TextView to display steps
 
         Button sortButton = findViewById(R.id.sortButton);  // Sort button
-        Button reverseSortButton = findViewById(R.id.reverseSortButton);  // Reverse sort button
         Button resetButton = findViewById(R.id.resetButton);  // Reset button
-        Button quitButton = findViewById(R.id.quitButton);  // Quit button
 
-        // Set up button functionality
-        sortButton.setOnClickListener(v -> sortUserInput(false));
-        reverseSortButton.setOnClickListener(v -> sortUserInput(true));
+        // Sort button logic
+        sortButton.setOnClickListener(v -> sortUserInput());
+
+        // Reset button logic
         resetButton.setOnClickListener(v -> resetFields());
-        quitButton.setOnClickListener(v -> finish());  // Close the app
     }
 
-    // Method to sort the user-input array, either in ascending or descending order
-    private void sortUserInput(boolean reverse) {
+    // Method to sort the user-input array and display steps
+    private void sortUserInput() {
         String inputText = inputArrayEditText.getText().toString().trim();
 
         if (!inputText.isEmpty()) {
@@ -63,16 +60,11 @@ public class MainActivity extends AppCompatActivity {
                     intArray[i] = Integer.parseInt(stringArray[i].trim());
                 }
 
-                // Sort the array using BubbleSort
-                int[] sortedArray = BubbleSort.sort(intArray);
+                // Call BubbleSort class to sort the array and display intermediate steps
+                String steps = BubbleSort.sortWithSteps(intArray);
 
-                // Reverse the array if reverse sorting is requested
-                if (reverse) {
-                    reverseArray(sortedArray);
-                }
-
-                // Display the sorted array
-                sortedArrayTextView.setText("Sorted Array: " + java.util.Arrays.toString(sortedArray));
+                // Display the sorting steps in the TextView
+                stepsTextView.setText(steps);
 
             } catch (NumberFormatException e) {
                 // Handle invalid input
@@ -84,22 +76,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Method to reverse an array
-    private void reverseArray(int[] array) {
-        int start = 0;
-        int end = array.length - 1;
-        while (start < end) {
-            int temp = array[start];
-            array[start] = array[end];
-            array[end] = temp;
-            start++;
-            end--;
-        }
-    }
-
     // Reset input and output fields
     private void resetFields() {
         inputArrayEditText.setText("");
-        sortedArrayTextView.setText("Array has been reset.");
+        stepsTextView.setText("Array has been reset.");
     }
 }
+
