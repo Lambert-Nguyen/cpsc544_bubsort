@@ -67,9 +67,21 @@ public class MainActivity extends AppCompatActivity {
             try {
                 // Split input by commas and convert to integers
                 String[] stringArray = inputText.split(",");
+
+                // Validate array size (must be between 3 and 8 numbers)
+                if (stringArray.length < 3 || stringArray.length > 8) {
+                    Toast.makeText(this, "Input must contain between 3 and 8 numbers.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 int[] intArray = new int[stringArray.length];
                 for (int i = 0; i < stringArray.length; i++) {
-                    intArray[i] = Integer.parseInt(stringArray[i].trim());
+                    int number = Integer.parseInt(stringArray[i].trim());
+                    if (number < 0 || number > 9) {
+                        Toast.makeText(this, "Each number must be between 0 and 9.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    intArray[i] = number;
                 }
 
                 // Call BubbleSort class to sort the array with the correct order (ascending or descending)
@@ -81,11 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (NumberFormatException e) {
                 // Handle invalid input
-                Toast.makeText(this, "Invalid input. Please enter numbers separated by commas.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Invalid input. Please enter integer numbers separated by commas.", Toast.LENGTH_SHORT).show();
             }
         } else {
             // Handle empty input
-            Toast.makeText(this, "Please enter numbers separated by commas.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter integer numbers separated by commas.", Toast.LENGTH_SHORT).show();
         }
     }
 
