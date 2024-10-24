@@ -50,7 +50,32 @@ public class BubbleSortTest {
     @Test
     public void testReverseBubbleSortWithUnsortedArray() {
         int[] array = {5, 3, 8, 4, 2, 7};
-        String expected = "{8, 7, 5, 4, 3, 2}";
+        String expected = "Input Array: [5, 3, 8, 4, 2, 7]\n" +
+                "[5, 3, 8, 4, 2, 7]\n" +
+                "[5, 8, 3, 4, 2, 7]\n" +
+                "[5, 8, 4, 3, 2, 7]\n" +
+                "[5, 8, 4, 3, 2, 7]\n" +
+                "[5, 8, 4, 3, 7, 2]\n" +
+                "End of iteration 1\n" +
+                "\n" +
+                "[8, 5, 4, 3, 7, 2]\n" +
+                "[8, 5, 4, 3, 7, 2]\n" +
+                "[8, 5, 4, 3, 7, 2]\n" +
+                "[8, 5, 4, 7, 3, 2]\n" +
+                "End of iteration 2\n" +
+                "\n" +
+                "[8, 5, 4, 7, 3, 2]\n" +
+                "[8, 5, 4, 7, 3, 2]\n" +
+                "[8, 5, 7, 4, 3, 2]\n" +
+                "End of iteration 3\n" +
+                "\n" +
+                "[8, 5, 7, 4, 3, 2]\n" +
+                "[8, 7, 5, 4, 3, 2]\n" +
+                "End of iteration 4\n" +
+                "\n" +
+                "[8, 7, 5, 4, 3, 2]\n" +
+                "Sorted Array: [8, 7, 5, 4, 3, 2]\n";
+//        System.out.println(BubbleSort.sortWithSteps(array, true));
         assertEquals(expected, BubbleSort.sortWithSteps(array, true));  // Reverse sort
     }
 
@@ -58,7 +83,9 @@ public class BubbleSortTest {
     @Test
     public void testBubbleSortWithEmptyArray() {
         int[] array = {};
-        String[] expected = {};
+        String expected = "Input Array: []\n" +
+                "Sorted Array: []\n";
+//        System.out.println(BubbleSort.sortWithSteps(array, false));
         assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
     }
 
@@ -66,7 +93,9 @@ public class BubbleSortTest {
     @Test
     public void testBubbleSortWithSingleElement() {
         int[] array = {1};
-        String expected = "{1}";
+        String expected = "Input Array: [1]\n" +
+                "Sorted Array: [1]\n";
+//        System.out.println(BubbleSort.sortWithSteps(array, false));
         assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
     }
 
@@ -74,7 +103,13 @@ public class BubbleSortTest {
     @Test
     public void testBubbleSortWithAlreadySortedArray() {
         int[] array = {1, 2, 3, 4, 5};
-        String expected = "{1, 2, 3, 4, 5}";
+        String expected = "Input Array: [1, 2, 3, 4, 5]\n" +
+                "[1, 2, 3, 4, 5]\n" +
+                "[1, 2, 3, 4, 5]\n" +
+                "[1, 2, 3, 4, 5]\n" +
+                "[1, 2, 3, 4, 5]\n" +
+                "Sorted Array: [1, 2, 3, 4, 5]\n";
+        System.out.println(BubbleSort.sortWithSteps(array, false));
         assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
     }
 
@@ -82,7 +117,27 @@ public class BubbleSortTest {
     @Test
     public void testReverseBubbleSortWithAlreadySortedArray() {
         int[] array = {1, 2, 3, 4, 5};
-        String expected = "{5, 4, 3, 2, 1}";
+        String expected = "Input Array: [1, 2, 3, 4, 5]\n" +
+                "[2, 1, 3, 4, 5]\n" +
+                "[2, 3, 1, 4, 5]\n" +
+                "[2, 3, 4, 1, 5]\n" +
+                "[2, 3, 4, 5, 1]\n" +
+                "End of iteration 1\n" +
+                "\n" +
+                "[3, 2, 4, 5, 1]\n" +
+                "[3, 4, 2, 5, 1]\n" +
+                "[3, 4, 5, 2, 1]\n" +
+                "End of iteration 2\n" +
+                "\n" +
+                "[4, 3, 5, 2, 1]\n" +
+                "[4, 5, 3, 2, 1]\n" +
+                "End of iteration 3\n" +
+                "\n" +
+                "[5, 4, 3, 2, 1]\n" +
+                "End of iteration 4\n" +
+                "\n" +
+                "Sorted Array: [5, 4, 3, 2, 1]\n";
+//        System.out.println(BubbleSort.sortWithSteps(array, true));
         assertEquals(expected, BubbleSort.sortWithSteps(array, true));  // Reverse sort
     }
 
@@ -90,7 +145,13 @@ public class BubbleSortTest {
     @Test
     public void testReverseBubbleSortWithReversedArray() {
         int[] array = {9, 8, 7, 6, 5};
-        String expected = "{9, 8, 7, 6, 5}";
+        String expected = "Input Array: [9, 8, 7, 6, 5]\n" +
+                "[9, 8, 7, 6, 5]\n" +
+                "[9, 8, 7, 6, 5]\n" +
+                "[9, 8, 7, 6, 5]\n" +
+                "[9, 8, 7, 6, 5]\n" +
+                "Sorted Array: [9, 8, 7, 6, 5]\n";
+//       System.out.println(BubbleSort.sortWithSteps(array, true));
         assertEquals(expected, BubbleSort.sortWithSteps(array, true));  // Reverse sort
     }
 

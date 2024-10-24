@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Call BubbleSort class to sort the array with the correct order (ascending or descending)
                 String steps = BubbleSort.sortWithSteps(intArray, reverse);
+                Log.d(TAG, "sortUserInput: " + steps);
 
                 // Display the sorting steps in the TextView
                 stepsTextView.setText(steps);
