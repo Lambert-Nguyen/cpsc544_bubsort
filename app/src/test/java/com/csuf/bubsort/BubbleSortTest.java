@@ -26,32 +26,23 @@ public class BubbleSortTest {
     // Test ascending sort with a valid unsorted array
     @Test
     public void testBubbleSortWithUnsortedArray() {
-        int[] array = {5, 3, 8, 4, 2, 7};
-        String expected = "Input Array: [5, 3, 8, 4, 2, 7]\n" +
-                "[5, 3, 8, 4, 2, 7]\n" +
-                "[5, 8, 3, 4, 2, 7]\n" +
-                "[5, 8, 4, 3, 2, 7]\n" +
-                "[5, 8, 4, 3, 2, 7]\n" +
-                "[5, 8, 4, 3, 7, 2]\n" +
-                "End of iteration 1\n" +
-                "\n" +
-                "[8, 5, 4, 3, 7, 2]\n" +
-                "[8, 5, 4, 3, 7, 2]\n" +
-                "[8, 5, 4, 3, 7, 2]\n" +
-                "[8, 5, 4, 7, 3, 2]\n" +
-                "End of iteration 2\n" +
-                "\n" +
-                "[8, 5, 4, 7, 3, 2]\n" +
-                "[8, 5, 4, 7, 3, 2]\n" +
-                "[8, 5, 7, 4, 3, 2]\n" +
-                "End of iteration 3\n" +
-                "\n" +
-                "[8, 5, 7, 4, 3, 2]\n" +
-                "[8, 7, 5, 4, 3, 2]\n" +
-                "End of iteration 4\n" +
-                "\n" +
-                "[8, 7, 5, 4, 3, 2]\n" +
-                "Sorted Array: [8, 7, 5, 4, 3, 2]";
+        int[] array = {9, 8, 7, 6, 5};
+        String expected = "Input Array: [9, 8, 7, 6, 5]\n" +
+                "[8, 9, 7, 6, 5]\n" +
+                "[8, 7, 9, 6, 5]\n" +
+                "[8, 7, 6, 9, 5]\n" +
+                "[8, 7, 6, 5, 9]\n" +
+                "End of iteration 1\n\n" +
+                "[7, 8, 6, 5, 9]\n" +
+                "[7, 6, 8, 5, 9]\n" +
+                "[7, 6, 5, 8, 9]\n" +
+                "End of iteration 2\n\n" +
+                "[6, 7, 5, 8, 9]\n" +
+                "[6, 5, 7, 8, 9]\n" +
+                "End of iteration 3\n\n" +
+                "[5, 6, 7, 8, 9]\n" +
+                "End of iteration 4\n\n" +
+                "Sorted Array: [5, 6, 7, 8, 9]\n";
         assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
     }
 
