@@ -1,58 +1,148 @@
-///*
-// * <!--
-// *   ~ /**
-// *   ~  * File       : $com.csuf.bubsort.test
-// *   ~  * Brief      : BubbleSortTest Junit Java Class file
-// *   ~  * Author     : Nguyen Phuong Duy Lam
-// *   ~  * Last Edited: Nguyen Phuong Duy Lam
-// *   ~  * Created On : 17/October/2024
-// *   ~  * Details    :
-// *   ~  * <p>
-// *   ~  * *****************************************************************************************
-// *   ~  * *****   Copyright 2024. Cal State Fullerton. All rights reserved - CONFIDENTIAL *********
-// *   ~  * *****************************************************************************************
-// *   ~
-// *   -->
-// */
-//package com.csuf.bubsort;
-//
-//import org.junit.Test;
-//import static org.junit.Assert.assertArrayEquals;
-//
-//public class BubbleSortTest {
-//
-//    @Test
-//    public void testBubbleSortWithUnsortedArray() {
-//        int[] array = {5, 3, 8, 4, 2, 7};
-//        int[] expected = {2, 3, 4, 5, 7, 8};
-//        assertArrayEquals(expected, BubbleSort.sort(array));
-//    }
-//
-//    @Test
-//    public void testBubbleSortWithEmptyArray() {
-//        int[] array = {};
-//        int[] expected = {};
-//        assertArrayEquals(expected, BubbleSort.sort(array));
-//    }
-//
-//    @Test
-//    public void testBubbleSortWithSingleElement() {
-//        int[] array = {1};
-//        int[] expected = {1};
-//        assertArrayEquals(expected, BubbleSort.sort(array));
-//    }
-//
-//    @Test
-//    public void testBubbleSortWithAlreadySortedArray() {
-//        int[] array = {1, 2, 3, 4, 5};
-//        int[] expected = {1, 2, 3, 4, 5};
-//        assertArrayEquals(expected, BubbleSort.sort(array));
-//    }
-//
-//    @Test
-//    public void testBubbleSortWithReversedArray() {
-//        int[] array = {9, 8, 7, 6, 5};
-//        int[] expected = {5, 6, 7, 8, 9};
-//        assertArrayEquals(expected, BubbleSort.sort(array));
-//    }
-//}
+/*
+ * <!--
+ *   ~ /**
+ *   ~  * File       : $com.csuf.bubsort.test
+ *   ~  * Brief      : BubbleSortTest Junit Java Class file
+ *   ~  * Author     : Nguyen Phuong Duy Lam
+ *   ~  * Last Edited: Nguyen Phuong Duy Lam
+ *   ~  * Created On : 17/October/2024
+ *   ~  * Details    :
+ *   ~  * <p>
+ *   ~  * *****************************************************************************************
+ *   ~  * *****   Copyright 2024. Cal State Fullerton. All rights reserved - CONFIDENTIAL *********
+ *   ~  * *****************************************************************************************
+ *   ~
+ *   -->
+ */
+package com.csuf.bubsort;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import java.util.Arrays;
+
+public class BubbleSortTest {
+
+    // Test ascending sort with a valid unsorted array
+    @Test
+    public void testBubbleSortWithUnsortedArray() {
+        int[] array = {5, 3, 8, 4, 2, 7};
+        String expected = "Input Array: [5, 3, 8, 4, 2, 7]\n" +
+                "[5, 3, 8, 4, 2, 7]\n" +
+                "[5, 8, 3, 4, 2, 7]\n" +
+                "[5, 8, 4, 3, 2, 7]\n" +
+                "[5, 8, 4, 3, 2, 7]\n" +
+                "[5, 8, 4, 3, 7, 2]\n" +
+                "End of iteration 1\n" +
+                "\n" +
+                "[8, 5, 4, 3, 7, 2]\n" +
+                "[8, 5, 4, 3, 7, 2]\n" +
+                "[8, 5, 4, 3, 7, 2]\n" +
+                "[8, 5, 4, 7, 3, 2]\n" +
+                "End of iteration 2\n" +
+                "\n" +
+                "[8, 5, 4, 7, 3, 2]\n" +
+                "[8, 5, 4, 7, 3, 2]\n" +
+                "[8, 5, 7, 4, 3, 2]\n" +
+                "End of iteration 3\n" +
+                "\n" +
+                "[8, 5, 7, 4, 3, 2]\n" +
+                "[8, 7, 5, 4, 3, 2]\n" +
+                "End of iteration 4\n" +
+                "\n" +
+                "[8, 7, 5, 4, 3, 2]\n" +
+                "Sorted Array: [8, 7, 5, 4, 3, 2]";
+        assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
+    }
+
+    // Test reverse sort with a valid unsorted array
+    @Test
+    public void testReverseBubbleSortWithUnsortedArray() {
+        int[] array = {5, 3, 8, 4, 2, 7};
+        String expected = "{8, 7, 5, 4, 3, 2}";
+        assertEquals(expected, BubbleSort.sortWithSteps(array, true));  // Reverse sort
+    }
+
+    // Test ascending sort with an empty array
+    @Test
+    public void testBubbleSortWithEmptyArray() {
+        int[] array = {};
+        String[] expected = {};
+        assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
+    }
+
+    // Test ascending sort with a single element
+    @Test
+    public void testBubbleSortWithSingleElement() {
+        int[] array = {1};
+        String expected = "{1}";
+        assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
+    }
+
+    // Test ascending sort with an already sorted array
+    @Test
+    public void testBubbleSortWithAlreadySortedArray() {
+        int[] array = {1, 2, 3, 4, 5};
+        String expected = "{1, 2, 3, 4, 5}";
+        assertEquals(expected, BubbleSort.sortWithSteps(array, false));  // Ascending sort
+    }
+
+    // Test reverse sort with an already sorted array in ascending order
+    @Test
+    public void testReverseBubbleSortWithAlreadySortedArray() {
+        int[] array = {1, 2, 3, 4, 5};
+        String expected = "{5, 4, 3, 2, 1}";
+        assertEquals(expected, BubbleSort.sortWithSteps(array, true));  // Reverse sort
+    }
+
+    // Test reverse sort with an already sorted array in descending order
+    @Test
+    public void testReverseBubbleSortWithReversedArray() {
+        int[] array = {9, 8, 7, 6, 5};
+        String expected = "{9, 8, 7, 6, 5}";
+        assertEquals(expected, BubbleSort.sortWithSteps(array, true));  // Reverse sort
+    }
+
+    // Test for input validation (check invalid number range - below 0 and above 9)
+    @Test
+    public void testInvalidInputBelowRange() {
+        int[] array = {-1, 2, 3};  // Invalid number (-1)
+        try {
+            BubbleSort.sortWithSteps(array, false);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Each number must be between 0 and 9.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testInvalidInputAboveRange() {
+        int[] array = {2, 11, 3};  // Invalid number (11)
+        try {
+            BubbleSort.sortWithSteps(array, false);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Each number must be between 0 and 9.", e.getMessage());
+        }
+    }
+
+    // Test for array size validation (too few numbers)
+    @Test
+    public void testTooFewNumbers() {
+        int[] array = {1, 2};  // Less than 3 numbers
+        try {
+            BubbleSort.sortWithSteps(array, false);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Input must contain between 3 and 8 numbers.", e.getMessage());
+        }
+    }
+
+    // Test for array size validation (too many numbers)
+    @Test
+    public void testTooManyNumbers() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};  // More than 8 numbers
+        try {
+            BubbleSort.sortWithSteps(array, false);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Input must contain between 3 and 8 numbers.", e.getMessage());
+        }
+    }
+}
