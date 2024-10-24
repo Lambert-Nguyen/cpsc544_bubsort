@@ -6,7 +6,7 @@
  *   ~  * Author     : Nguyen Phuong Duy Lam
  *   ~  * Created On : 18/October/2024
  *   ~  * Last Edited: Nguyen Phuong Duy Lam
- *   ~  * Edited Date: 21/October/2024
+ *   ~  * Edited Date: 23/October/2024
  *   ~  * Details    :
  *   ~  * <p>
  *   ~  * *****************************************************************************************
@@ -17,93 +17,94 @@
  */
 package com.csuf.bubsort;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
+import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView imageView4;
-    ImageView imageView5;
-    ImageView imageView6;
-    ImageView imageView7;
-    ImageView imageView8;
-
-    private TextView sortedArrayTextView;
-    private TextView dialogTextView;
-    private int[] array = {5, 3, 8, 4, 2, 7};  // Initial example array
-    private int[] sortedArray = {};
+    private EditText inputArrayEditText;
+    private TextView stepsTextView;
+    private static final String TAG = MainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sortedArrayTextView = findViewById(R.id.MainTextView);
-        dialogTextView = findViewById(R.id.editTextText2);
-        Button resetButton = findViewById(R.id.resetButton);
-        sortedArrayTextView.setText("Welcome to BubSort Application");
+        inputArrayEditText = findViewById(R.id.editTextText);  // User input EditText
+        stepsTextView = findViewById(R.id.editTextView);  // TextView to display steps
 
+        Button sortButton = findViewById(R.id.sortButton);  // Sort button
+        Button reverseSortButton = findViewById(R.id.reverseSortButton);  // Reverse sort button
+        Button resetButton = findViewById(R.id.resetButton);  // Reset button
+        Button quitButton = findViewById(R.id.quitButton);  // Quit button
 
-        // Display the sorted array
-        displaySortedArray();
+        // Sort button logic (ascending order)
+        sortButton.setOnClickListener(v -> sortUserInput(false));
 
-        // Handle reset button click
-        resetButton.setOnClickListener(view -> confirmReset());  // Call confirmReset here
+        // Reverse sort button logic (descending order)
+        reverseSortButton.setOnClickListener(v -> sortUserInput(true));
 
-        // Display the sorted array on the UI
-        TextView outputView = findViewById(R.id.editTextView);
-        outputView.setText(Arrays.toString(sortedArray));
+        // Reset button logic
+        resetButton.setOnClickListener(v -> resetFields());
 
-        // Declare animation objects
-        Animation wiggleAnimation = AnimationUtils.loadAnimation(this, R.anim.wiggle);
-        Animation wiggleAnimation2 = AnimationUtils.loadAnimation(this, R.anim.wiggle2);
-        Animation wiggleAnimation3 = AnimationUtils.loadAnimation(this, R.anim.wiggle3);
-
-        imageView4 = findViewById(R.id.imageView4);
-        imageView4.startAnimation(wiggleAnimation2);
-
-        imageView5 = findViewById(R.id.imageView5);
-        imageView5.startAnimation(wiggleAnimation);
-
-        imageView6 = findViewById(R.id.imageView6);
-        imageView6.startAnimation(wiggleAnimation2);
-
-        imageView7 = findViewById(R.id.imageView7);
-        imageView7.startAnimation(wiggleAnimation);
-
-        imageView8 = findViewById(R.id.imageView8);
-        imageView8.startAnimation(wiggleAnimation3);
+        // Quit button logic
+        quitButton.setOnClickListener(v -> finish());  // Close the app
     }
 
-    private void displaySortedArray() {
-        // Call the BubbleSort class to sort the array
-        sortedArray = BubbleSort.sort(array);
-        // Display the sorted array in the TextView
-//        MainTextView.setText("Sorted Array: " + java.util.Arrays.toString(sortedArray));
+    // Method to sort the user-input array and display steps
+    private void sortUserInput(boolean reverse) {
+        String inputText = inputArrayEditText.getText().toString().trim();
+        Log.d(TAG, "sortUserInput: inputText: " + inputText);
+
+        if (!inputText.isEmpty()) {
+            try {
+                // Split input by commas and convert to integers
+                String[] stringArray = inputText.split(",");
+
+                // Validate array size (must be between 3 and 8 numbers)
+                if (stringArray.length < 3 || stringArray.length > 8) {
+                    Toast.makeText(this, "Input must contain between 3 and 8 numbers.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int[] intArray = new int[stringArray.length];
+                for (int i = 0; i < stringArray.length; i++) {
+                    int number = Integer.parseInt(stringArray[i].trim());
+                    if (number < 0 || number > 9) {
+                        Toast.makeText(this, "Each number must be between 0 and 9.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    intArray[i] = number;
+                }
+
+                // Call BubbleSort class to sort the array with the correct order (ascending or descending)
+                String steps = BubbleSort.sortWithSteps(intArray, reverse);
+
+                // Display the sorting steps in the TextView
+                stepsTextView.setText(steps);
+                stepsTextView.setMovementMethod(new ScrollingMovementMethod());
+
+            } catch (NumberFormatException e) {
+                // Handle invalid input
+                Toast.makeText(this, "Invalid input. Please enter integer numbers separated by commas.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // Handle empty input
+            Toast.makeText(this, "Please enter integer numbers separated by commas.", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void resetArray() {
-        // Reset the array to a new state (e.g., the initial state or an empty state)
-        array = new int[] {};  // Clear the array or set it to its original state
-        // Clear the TextView
-        dialogTextView.setText("Array has been reset.");
-    }
-
-    private void confirmReset() {
-        new AlertDialog.Builder(this)
-                .setTitle("Confirm Reset")
-                .setMessage("Are you sure you want to reset the array?")
-                .setPositiveButton("Yes", (dialog, which) -> resetArray())
-                .setNegativeButton("No", null)
-                .show();
+    // Reset input and output fields
+    private void resetFields() {
+        inputArrayEditText.setText("");
+        stepsTextView.setText("Array has been reset.");
     }
 }
 
