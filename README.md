@@ -1,45 +1,105 @@
-***Edit a file, create a new file, and clone from Bitbucket in under 2 minutes***
+# BubSort Application - Group 1
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
-
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
-
----
-
-## Edit a file
-
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+## Project Overview
+BubSort is an Android application developed by Group 1 as part of the CPSC 544 project 1. This app implements the Bubble Sort algorithm, allowing users to input a list of numbers and visualize the sorting process step-by-step in both ascending and descending order.
 
 ---
 
-## Create a file
+## Installation Instructions
 
-Next, you’ll add a new file to this repository.
+### 1. Download the APK File
+- Download the file named `BubSort_Group1.apk` to your Android device.
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+### 2. Enable Installation from Unknown Sources
+- Go to **Settings > Security > Unknown Sources** on your Android device and enable it. This step allows you to install apps from sources other than the Google Play Store.
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+### 3. Install the APK
+- Using your file manager, locate `BubSort_Group1.apk` on your device and tap on it to start the installation.
 
 ---
 
-## Clone a repository
+## Running the App on an Android Emulator
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+If you don’t have an Android device, you can use the Android Emulator in Android Studio to run the BubSort app. Follow these steps to set up the emulator and install the APK.
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+### Step 1: Install Android Studio
+1. **Download Android Studio**:
+   - Visit [https://developer.android.com/studio](https://developer.android.com/studio) and download the latest version for your operating system (Windows, macOS, or Linux).
+2. **Install Android Studio**:
+   - Follow the installation prompts. Once installed, open Android Studio.
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+### Step 2: Set Up an Android Virtual Device (AVD)
+1. **Open AVD Manager**:
+   - In Android Studio, go to **Tools > Device Manager** or click the **Device Manager icon** in the toolbar.
+2. **Create a New Virtual Device**:
+   - Click **Create Device**.
+   - Select a device type (e.g., **Pixel 4**) and click **Next**.
+3. **Select a System Image**:
+   - Choose a system image. (Tip: Select an image marked **Recommended** for stability.)
+   - Click **Next**, then **Finish** to complete the setup.
+
+### Step 3: Launch the Emulator
+1. **Open the Emulator**:
+   - In the Device Manager, find your virtual device and click the **Play icon** to start the emulator. It may take a minute or two to load.
+
+### Step 4: Install the APK on the Emulator
+1. **Drag and Drop the APK**:
+   - Locate the `BubSort_Group1.apk` file on your computer.
+   - Drag and drop the APK file directly onto the running emulator screen.
+2. **Confirm Installation**:
+   - Follow the prompts to install the app on the emulator.
+   - Once installed, find and open **BubSort** in the emulator’s app drawer.
+
+### You're All Set!
+You can now use the BubSort app on the emulator as if it were a physical Android device.
+
+---
+
+## Usage Instructions
+
+### 1. Launch the Application
+- Once installed, open the BubSort application from your app drawer.
+
+### 2. Input Array
+- Enter a list of numbers separated by commas in the input field. Ensure the array meets these requirements:
+  - **Size**: Between 3 and 8 numbers.
+  - **Range**: Each number should be between 0 and 9.
+  - Example: `5, 3, 8, 4, 2`
+
+### 3. Sort Options
+- **Sort**: Tap this button to perform Bubble Sort in ascending order. The app will display each step of the sorting process.
+- **Reverse Sort**: Tap this button to perform Bubble Sort in descending order, showing the intermediate steps as well.
+
+### 4. Additional Features
+- **Reset**: Clears both the input and output fields, allowing you to start a new sort.
+- **Quit**: Closes the application.
+
+---
+
+## Example of Usage
+- **Input**: `5, 3, 8, 4, 2`
+- **Output** (Ascending Sort): 
+  - Initial Array: `[5, 3, 8, 4, 2]`
+  - Intermediate Steps: `[3, 5, 4, 2, 8]`, `[3, 4, 2, 5, 8]`, and so on.
+  - Sorted Array: `[2, 3, 4, 5, 8]`
+
+---
+
+## Group Information
+
+- **Group Number**: 1
+- **Project Title**: BubSort Application
+- **Instructor**: Swayam Pati
+- **Group Members**:
+  - Phuong Duy Lam, Nguyen
+  - Christy, Xiu
+  - Natan, Rincon Luna
+  - Huy, Nguyen
+  - Zhihao, Zhang
+- **Submission Date**: Oct 25, 2024
+
+---
+
+## License
+This project is for educational purposes as part of the CPSC 544 course at Cal State Fullerton.
+
